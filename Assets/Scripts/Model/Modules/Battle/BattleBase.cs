@@ -36,7 +36,8 @@ namespace Model.Modules.Battle
 
       BattleHero random_alive_hero       = curTeam    .battleHeroes.Where( it => !it.isDead ).ToList().randomElement();
       BattleHero random_alive_enemy_hero = anotherTeam.battleHeroes.Where( it => !it.isDead ).ToList().randomElement();
-      random_alive_hero.giveDamageTo( random_alive_enemy_hero );
+      if ( random_alive_hero != null && random_alive_enemy_hero != null )
+        random_alive_hero.giveDamageTo( random_alive_enemy_hero );
 
       onIteration( iteration );
 

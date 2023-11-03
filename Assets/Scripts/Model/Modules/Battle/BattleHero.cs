@@ -19,7 +19,7 @@ namespace Model.Modules.Battle
     public float           damage          { get; private set; }
 
 
-    internal BattleHero( HeroPrototypeID hero_prototype_id, float health, float damage )
+    public BattleHero( HeroPrototypeID hero_prototype_id, float health, float damage )
     {
       heroPrototypeID = hero_prototype_id;
       this.health = health;
