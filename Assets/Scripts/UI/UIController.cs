@@ -48,7 +48,7 @@ namespace UI
       battleUI.gameObject.SetActive( true );
 
 
-      IEnumerable<BattleHero> my_battle_heroes = ModuleHero.myHeroes.Select( createBattleHero );
+      IEnumerable<BattleHero> my_battle_heroes = ModulesCommon.modulesContainer.hero.getMyHeroes().Select( createBattleHero );
       BattleTeam              my_team          = new BattleTeam( my_battle_heroes );
 
       IEnumerable<BattleHero> enemy_battle_heroes = location_data.enemies.Select( createBattleHero );
