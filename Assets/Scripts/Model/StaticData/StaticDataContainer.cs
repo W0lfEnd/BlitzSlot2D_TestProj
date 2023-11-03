@@ -1,7 +1,6 @@
 using Model.Modules.Hero.StaticData;
 using Model.Modules.Location.StaticData;
 using Model.StaticData.Readers;
-using UnityEngine;
 
 
 namespace Model.StaticData

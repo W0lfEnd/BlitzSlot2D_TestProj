@@ -14,12 +14,10 @@ namespace Model.Modules.Battle
 
     public int    iteration { get; private set; } = 0;
     public TeamID curTeamID { get; private set; } = TeamID.NONE;
-    public TeamID winnerID = TeamID.NONE;
-
-
     public Dictionary<TeamID, BattleTeam> battleTeams = new Dictionary<TeamID, BattleTeam>();
-    private Dictionary<TeamID, int> teamTurnsCount = new Dictionary<TeamID, int>();
-    
+
+
+    private TeamID winnerID = TeamID.NONE;
     private BattleTeam curTeam => battleTeams[curTeamID];
     private BattleTeam anotherTeam => battleTeams[curTeamID.getNextTeamID()];
 
@@ -40,13 +38,12 @@ namespace Model.Modules.Battle
       BattleHero random_alive_enemy_hero = anotherTeam.battleHeroes.Where( it => !it.isDead ).ToList().randomElement();
       random_alive_hero.giveDamageTo( random_alive_enemy_hero );
 
-      teamTurnsCount.setOrIncrement( curTeamID );
-      curTeamID = curTeamID.getNextTeamID();
-
       onIteration( iteration );
+
       if ( checkWinner() )
         return;
-      
+
+      curTeamID = curTeamID.getNextTeamID();
       iteration++;
     }
 
@@ -61,10 +58,10 @@ namespace Model.Modules.Battle
 
       TeamID getWinner()
       {
-        if ( anotherTeam.isAllDead )
+        if ( battleTeams[TeamID.SECOND].isAllDead )
           return TeamID.FIRST;
 
-        if ( curTeam.isAllDead )
+        if ( battleTeams[TeamID.FIRST].isAllDead )
           return TeamID.SECOND;
 
         return TeamID.NONE;

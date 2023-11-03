@@ -35,7 +35,7 @@ namespace UI
       
       image.color = Color.white;
       updateHpBar();
-      txtDamage.text = battleHero.damage.ToString();
+      txtDamage.text = $"Damage: {battleHero.damage.ToString()}";
     }
 
     public void deinit()
