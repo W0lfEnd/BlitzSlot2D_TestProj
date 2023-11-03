@@ -43,7 +43,7 @@ public class LocationSelectUI : MonoBehaviour
 
             TextMeshProUGUI btnText = btns[i].GetComponentInChildren<TextMeshProUGUI>();
             if ( btnText )
-                btnText.text = idx.ToString();
+                btnText.text = $"Location #{(idx + 1).ToString()}";
         }
     }
     #endregion
